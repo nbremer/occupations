@@ -6,6 +6,9 @@ function drawAll() {
 
 	var width = $("#chart").width() - 20,
 		height = (window.innerWidth < 768 ? width : window.innerHeight - 90);
+		
+		console.log(width);
+		console.log(height);
 
 	var commaFormat = d3.format(','),
 		mobileSize = (window.innerWidth < 768 ? true : false);
