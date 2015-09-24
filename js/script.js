@@ -16,7 +16,7 @@ function drawAll() {
 	////////////////// Create Set-up variables  ////////////////// 
 	////////////////////////////////////////////////////////////// 
 
-	var width = Math.max($("#chart").width(),400) - 20,
+	var width = Math.max($("#chart").width(),350) - 20,
 		height = (window.innerWidth < 768 ? width : window.innerHeight - 90);
 
 		//console.log(width);
