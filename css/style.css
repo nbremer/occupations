@@ -105,6 +105,7 @@ a:hover {
 	text-anchor: middle;
 	font-size: 10px;
 	line-height: 1.2;
+	font-family: 'Merriweather Sans', sans-serif;
 }
 
 .legendText {
@@ -123,11 +124,32 @@ a:hover {
 	font-family: 'Merriweather Sans', sans-serif;
 }
 
+#loadText {
+	color: white;
+	/*font-family: 'Oswald', sans-serif;*/
+	/*text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff;*/
+	position: absolute;
+	text-align: center;
+	/*height:100%;*/
+	top:35%;
+	width:100%;
+	left:0%;
+	font-size: 16px;
+}
+
+@media (min-width: 768px) {
+	#loadText {
+		font-size: 24px;
+		top:40%;
+	}
+}
+
 .nodeTooltip {
 	color: #333333;
 	font-family: 'Oswald', sans-serif;
 	text-anchor: middle;
 	font-size: 12px;
+	text-align: center;
 }
 
 .node {

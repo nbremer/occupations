@@ -2,8 +2,8 @@
 ////////////////// Create Set-up variables  ////////////////// 
 ////////////////////////////////////////////////////////////// 
 
-var width = $("#chart").width(),
-	height = (window.innerWidth < 768 ? width : window.innerHeight - 210);
+var width = $("#chart").width() - 20,
+	height = (window.innerWidth < 768 ? width : window.innerHeight - 90);
 
 var commaFormat = d3.format(','),
 	mobileSize = (window.innerWidth < 768 ? true : false);
@@ -478,6 +478,7 @@ function runAfterCompletion() {
   createLegend(scaleFactor);
   focus0 = root;
   k0 = 1;
+  d3.select("#loadText").remove();
   zoomTo(root);
 };
 
@@ -495,7 +496,7 @@ function showTooltip (d) {
 	trigger: 'manual',
 	html : true,
 	content: function() { 
-	  return "<span class='nodeTooltip'>" + d.name + "</span>"; }
+	  return "<p class='nodeTooltip'>" + d.name + "</p>"; }
   });
   $(this).popover('show')
 }
@@ -571,11 +572,13 @@ d3.json("data/occupation.json", function(error, dataset) {
 			else return "plotWrapper_node";
 		});
 		
-	//Mouseover only on leaf nodes		
-	plotWrapper.filter(function(d) { return typeof d.children === "undefined"; })
-			.on("mouseover", showTooltip)
-			.on("mouseout", removeTooltip);
-
+	if(!mobileSize) {
+		//Mouseover only on leaf nodes		
+		plotWrapper.filter(function(d) { return typeof d.children === "undefined"; })
+				.on("mouseover", showTooltip)
+				.on("mouseout", removeTooltip);
+	}//if
+	
 	////////////////////////////////////////////////////////////// 
 	///////////////////// Draw the circles /////////////////////// 
 	////////////////////////////////////////////////////////////// 
@@ -588,7 +591,7 @@ d3.json("data/occupation.json", function(error, dataset) {
 				return d.r; 
 			})
 			.on("click", function(d) { if (focus !== d) zoomTo(d); else zoomTo(root); });
-			
+					
 	////////////////////////////////////////////////////////////// 
 	//////// Draw the titles of parent circles on the Arcs /////// 
 	////////////////////////////////////////////////////////////// 	
